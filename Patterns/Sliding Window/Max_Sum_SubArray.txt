@@ -1,0 +1,28 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int currentSum=0;
+        int maxSum=0;
+        
+        //will fail if all nos are negative
+        /*
+        for(int startIndex=0;startIndex<nums.length;startIndex++){
+            currentSum+=nums[startIndex];
+            maxSum=Math.max(currentSum,maxSum);
+            if(currentSum<0)
+                currentSum=0;
+                        
+            
+        }
+        
+        return maxSum;
+        */
+        //DP
+        int currentMax=nums[0];
+        int sumSub=nums[0];
+        for(int startIndex=1;startIndex<nums.length;startIndex++){
+            sumSub=Math.max(nums[startIndex],nums[startIndex]+sumSub);
+            currentMax =Math.max(currentMax,sumSub);
+        }
+        return currentMax;
+    }
+}
